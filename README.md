@@ -72,7 +72,7 @@ Routes:
 ### Clone Repository
 
 ```bash
-git clone 
+git clone <https://github.com/MuteebaIjaz/Backend-Internship-DHC-1121-.git>
 cd Week1/Week2/Week3
 ```
 
