@@ -8,7 +8,78 @@
 </head>
 <body>
 <!-- Navbar -->
-   <%- include('../components/navbar.ejs') %>
+ <nav class="navbar">
+    <div class="nav-container">
+        <a href="/" class="logo">ShopHub</a>
+
+        <ul class="nav-links">
+            <li><a href="/">Home</a></li>
+            <li><a href="/products">Products</a></li>
+            <% if (locals.user && locals.user.role === 'admin') { %>
+                <li><a href="/add-products">Add Products</a></li>
+            <% } %>
+        </ul>
+
+        <form action="/products" method="GET" class="nav-search-form">
+            <input type="text" name="search" placeholder="Search products..."
+                value="<%= typeof search !== 'undefined' ? search : '' %>" class="nav-search-input" />
+            <button type="submit" class="search-btn">Search</button>
+        </form>
+
+        <% if (locals.user) { %>
+            <div class="user-actions">
+                <span class="user-greeting">Hi, <%= user.name %></span>
+                <form action="/logout" method="POST" class="logout-form" style="display:inline;">
+                    <button type="submit">Logout</button>
+                </form>
+            </div>
+        <% } else { %>
+            <div class="user-actions">
+                <a href="/login" class="btn btn-sm btn-outline">Login</a>
+                <a href="/register" class="btn btn-sm">Register</a>
+            </div>
+        <% } %>
+
+        <div class="hamburger" onclick="toggleMenu()">&#9776;</div>
+    </div>
+
+    <ul class="mobile-menu" id="mobileMenu">
+        <li><a href="/">Home</a></li>
+        <li><a href="/products">Products</a></li>
+        <% if (locals.user && locals.user.role === 'admin') { %>
+            <li><a href="/add-products">Add Products</a></li>
+        <% } %>
+        <li>
+            <form action="/products" method="GET" class="mobile-search-form">
+                <input type="text" name="search" placeholder="Search products..."
+                    value="<%= typeof search !== 'undefined' ? search : '' %>" class="nav-search-input" />
+                <button type="submit" class="search-btn">Search</button>
+            </form>
+        </li>
+        <% if (typeof search !== 'undefined' && search !== '') { %>
+            <li><a href="/products" class="clear-link">✕ Clear Search</a></li>
+        <% } %>
+        <% if (locals.user) { %>
+            <li class="mobile-greeting" style="color: var(--text-muted); font-size: 0.9rem; padding: 0.5rem 0;">Hi, <%= user.name %></li>
+            <li>
+                <form action="/logout" method="POST" class="logout-form">
+                    <button type="submit" style="width: 100%; text-align: center;">Logout</button>
+                </form>
+            </li>
+        <% } else { %>
+            <li><a href="/login">Login</a></li>
+            <li><a href="/register">Register</a></li>
+        <% } %>
+    </ul>
+</nav>
+
+<!-- Search Result Bar -->
+<% if (typeof search !== 'undefined' && search !== '') { %>
+    <div class="search-active-bar">
+        Showing results for "<strong><%= search %></strong>"
+        <a href="/products">✕ Clear</a>
+    </div>
+<% } %>
 
 
     <section class="page-not-found">

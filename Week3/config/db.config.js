@@ -1,13 +1,24 @@
-const mongoose = require('mongoose');
 
+
+
+
+const mongoose = require('mongoose');
 
 const connectDB = async () => {
    try {
-     await mongoose.connect("mongodb://localhost:27017/ShopHub");
-     console.log("Database Connected Successfully",mongoose.connection.name);
+     if (mongoose.connection.readyState >= 1) return;
+     
+     
+     const db_URI = process.env.MONGO_URI || "mongodb://localhost:27017/ShopHub";
+     
+     await mongoose.connect(dbURI);
+     console.log("Database Connected Successfully:", mongoose.connection.name);
    } catch (error) {
-    console.log(error);
-    process.exit(1);
+     console.error("Database connection error:", error);
+     if (process.env.NODE_ENV !== 'production') {
+         process.exit(1);
+     }
    }
 }
+
 module.exports = connectDB;
