@@ -143,9 +143,9 @@ npm start
 * Home Page
 ![Home Page](./ScreenShots/Home-Page.png)
 * Product Listing Page
-![Product Listing Page](./ScreenShots/Product-Detail%20Page.png)
+![Product Listing Page](./ScreenShots/Products-Listing-Page.png)
 * Product Details Page
-![Product Details Page](./ScreenShots/Product-Detail%20Page.png)
+![Product Details Page](./ScreenShots/Product-Detail-Page.png)
 * Login Page
 ![Login Page](./ScreenShots/Login-Page.png)
 * Registration Page
