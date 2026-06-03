@@ -1,5 +1,15 @@
 {
   "version": 2,
-  "builds": [{ "src": "Week3/server.js", "use": "@vercel/node" }],
-  "routes": [{ "src": "/(.*)", "dest": "Week3/server.js" }]
+  "builds": [
+    {
+      "src": "server.js",
+      "use": "@vercel/node"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/(.*)",
+      "dest": "server.js"
+    }
+  ]
 }
