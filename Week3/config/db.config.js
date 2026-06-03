@@ -5,11 +5,12 @@
 const mongoose = require('mongoose');
 
 const connectDB = async () => {
+     const db_URI = process.env.MONGO_URI || "mongodb://localhost:27017/ShopHub";
+
    try {
      if (mongoose.connection.readyState >= 1) return;
      
      
-     const db_URI = process.env.MONGO_URI || "mongodb://localhost:27017/ShopHub";
      
      await mongoose.connect(dbURI);
      console.log("Database Connected Successfully:", mongoose.connection.name);
