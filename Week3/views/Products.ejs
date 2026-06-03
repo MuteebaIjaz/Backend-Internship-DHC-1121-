@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ShopHub - Products</title>
+    <link rel="stylesheet" href="/css/home.css">
+</head>
+<body>
+
+    <!-- Navbar -->
+    <%- include('../components/navbar.ejs') %>
+
+    <!-- Product Section -->
+    <section class="Products-display">
+
+        <% if (products.length === 0) { %>
+            <div class="no-result">
+                <p>No products found for "<%= search %>".</p>
+                <a href="/products" class="btn btn-sm">View All</a>
+            </div>
+        <% } else { %>
+            <h2>Products</h2>
+            <div class="product-grid">
+                <% products.forEach(product => { %>
+                    <div class="product-card">
+                        <img src="<%= product.image %>" alt="<%= product.name %>">
+                        <div class="card-body">
+                            <span class="category-badge"><%= product.category %></span>
+                            <h3><%= product.name %></h3>
+                            <p class="price">$<%= product.price %></p>
+                            <p class="desc"><%= product.description %></p>
+                            <a href="/products/<%= product._id %>" class="btn btn-sm">View Details</a>
+                        </div>
+                    </div>
+                <% }) %>
+            </div>
+
+            <!-- Pagination -->
+            <% if (pages > 1) { %>
+                <div class="pagination">
+                    <%# Previous button %>
+                    <% if (page > 1) { %>
+                        <a href="/products?page=<%= page - 1 %>&search=<%= search %>" class="page-btn">← Prev</a>
+                    <% } else { %>
+                        <span class="page-btn disabled">← Prev</span>
+                    <% } %>
+
+                    <%# Page numbers %>
+                    <% for (let i = 1; i <= pages; i++) { %>
+                        <a href="/products?page=<%= i %>&search=<%= search %>"
+                            class="page-btn <%= page === i ? 'active' : '' %>">
+                            <%= i %>
+                        </a>
+                    <% } %>
+
+                    <%# Next button %>
+                    <% if (page < pages) { %>
+                        <a href="/products?page=<%= page + 1 %>&search=<%= search %>" class="page-btn">Next →</a>
+                    <% } else { %>
+                        <span class="page-btn disabled">Next →</span>
+                    <% } %>
+                </div>
+            <% } %>
+        <% } %>
+    </section>
+
+    <!-- Footer -->
+    <%- include('../components/footer.ejs') %>
+
+    <script src="/js/script.js"></script>
+
+</body>
+</html>

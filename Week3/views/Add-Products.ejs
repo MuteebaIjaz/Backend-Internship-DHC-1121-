@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ShopHub - Add Product</title>
+
+    <link rel="stylesheet" href="/css/home.css">
+</head>
+
+<body>
+
+    <!-- Navbar -->
+  <%- include('../components/navbar.ejs') %>
+ 
+  
+<!-- Add-Products Form -->
+
+<form action="/add-products" method="POST" class="add-products-form">
+           
+<h2>Add New Product</h2>
+
+        <% if (locals.message) { %>
+            <div class="alert alert-error">
+                <%= message %>
+            </div>
+        <% } %>
+
+        <label for="name">Product Name</label>
+  <input  type="text" id="name" name="name"        placeholder="Enter product name"  required />
+        <label for="description">Description</label>
+  <textarea id="description"            name="description" placeholder="Enter product description" required></textarea>
+        <label for="price">Price ($)</label>
+  <input  type="number" id="price" name="price"       placeholder="Enter price"         step="0.01" required />
+        <label for="category">Category</label>
+  <input  type="text" id="category"   name="category"    placeholder="Enter category (e.g., Electronics, Fashion)" required />
+        <label for="stock">Stock Quantity</label>
+  <input  type="number" id="stock" name="stock"       placeholder="Enter stock quantity"         required />
+        <label for="image">Image URL</label>
+  <input type="text" name="image" id="image" placeholder="Enter image URL (e.g., https://images.unsplash.com/...)" required>
+  <button type="submit">Add Product</button>
+</form>
+         
+        
+            <!-- Footer -->
+             <%- include('../components/footer.ejs') %>
+
+            <script src="/js/script.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ShopHub - <%= product.name %></title>
+    <link rel="stylesheet" href="/css/home.css">
+</head>
+<body>
+
+<!-- Navbar -->
+<%- include('../components/navbar.ejs') %>
+
+<!-- Product-Details Section -->
+<section class="product-detail">
+    <div class="breadcrumb">
+        <a href="/products">Products</a> &gt; <span><%= product.name %></span>
+    </div>
+
+    <div class="detail-container">
+        <div class="detail-image-box">
+            <img src="../<%= product.image %>" alt="<%= product.name %>" class="detail-image">
+        </div>
+
+        <div class="detail-info">
+            <span class="category-badge"><%= product.category %></span>
+            <h1><%= product.name %></h1>
+            <p class="detail-price">$<%= product.price %></p>
+            <p class="detail-desc"><%= product.description %></p>
+
+            <div class="stock-status <%= product.stock > 0 ? 'in-stock' : 'out-of-stock' %>">
+                <%= product.stock > 0 ? 'In Stock (' + product.stock + ' left)' : 'Out of Stock' %>
+            </div>
+
+            <div class="detail-actions">
+                <a href="#" class="btn">Add to Cart</a>
+                <a href="/products" class="btn btn-outline">Back to Products</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Footer -->
+<%- include('../components/footer.ejs') %>
+
+<script src="/js/script.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,41 @@
+<nav class="navbar">
+    <div class="nav-container">
+        <a href="/" class="logo">ShopHub</a>
+
+        <ul class="nav-links">
+            <li><a href="/">Home</a></li>
+            <li><a href="/products">Products</a></li>
+        </ul>
+        <form action="/products" method="GET" class="nav-search-form">
+            <input type="text" name="search" placeholder="Search products..."
+                value="<%= typeof search !== 'undefined' ? search : '' %>" class="nav-search-input" />
+            <button type="submit" class="search-btn">Search</button>
+        </form>
+
+        <div class="hamburger" onclick="toggleMenu()">&#9776;</div>
+    </div>
+    <ul class="mobile-menu" id="mobileMenu">
+        <li><a href="/">Home</a></li>
+        <li><a href="/products">Products</a></li>
+        <li>
+            <form action="/products" method="GET" class="mobile-search-form">
+                <input type="text" name="search" placeholder="Search products..."
+                    value="<%= typeof search !== 'undefined' ? search : '' %>" class="nav-search-input" />
+                <button type="submit" class="search-btn">Search</button>
+            </form>
+        </li>
+        <% if (typeof search !=='undefined' && search !=='' ) { %>
+            <li><a href="/products" class="clear-link">✕ Clear Search</a></li>
+            <% } %>
+    </ul>
+
+</nav>
+<!-- Search-Result Header -->
+<% if (typeof search !=='undefined' && search !=='' ) { %>
+    <div class="search-active-bar">
+        Showing results for "<strong>
+            <%= search %>
+        </strong>"
+        <a href="/products">✕ Clear</a>
+    </div>
+    <% } %>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ShopHub - Home</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+
+    <!-- Navbar -->
+    <%- include('../components/navbar.ejs') %>
+        <!-- Hero-Section -->
+        <section class="hero">
+            <div class="hero-content">
+                <h1>Discover Premium Products</h1>
+                <p>Quality items for every lifestyle — from fashion to tech.</p>
+                <a href="/products" class="btn">Shop Now</a>
+            </div>
+        </section>
+        <!-- Featured Products -->
+        <section class="featured">
+            <h2>Featured Products</h2>
+            <div class="product-grid">
+                <% products.forEach(product=> { %>
+                    <div class="product-card">
+                        <img src="<%= product.image  %>" alt="<%= product.name %>">
+                        <div class="card-body">
+                            <span class="category-badge">
+                                <%= product.category %>
+                            </span>
+                            <h3>
+                                <%= product.name %>
+                            </h3>
+                            <p class="price">$<%= product.price %>
+                            </p>
+                            <p class="desc">
+                                <%= product.description %>
+                            </p>
+                            <a href="/products/<%= product._id %>" class="btn btn-sm">View Details</a>
+                        </div>
+                    </div>
+                    <% }) %>
+            </div>
+        </section>
+        <!-- Footer -->
+
+        <%- include('../components/footer.ejs') %>
+
+
+            <script src="/js/script.js"></script>
+
+</body>
+
+</html>
