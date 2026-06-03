@@ -67,54 +67,13 @@ Routes:
 
 
 
-## 📂 Project Structure
-
-```bash
-ecommerce-backend-design/
-│
-├── config/
-│   └── db.js
-│
-├── controllers/
-│   ├── authController.js
-│   └── productController.js
-│
-├── middleware/
-│   └── authMiddleware.js
-│
-├── models/
-│   ├── User.js
-│   └── Product.js
-│
-├── routes/
-│   ├── authRoutes.js
-│   └── productRoutes.js
-│
-├── views/
-│   ├── home.ejs
-│   ├── products.ejs
-│   ├── productDetails.ejs
-│   ├── login.ejs
-│   └── signup.ejs
-│
-├── public/
-│   ├── css/
-│   ├── js/
-│   └── images/
-│
-├── 
-├── app.js
-├── package.json
-└── README.md
-```
-
 ## ⚙️ Installation
 
 ### Clone Repository
 
 ```bash
 git clone 
-cd ecommerce-backend-design
+cd Week1/Week2/Week3
 ```
 
 ### Install Dependencies
@@ -182,10 +141,17 @@ npm start
 
 
 * Home Page
+![Home Page](./ScreenShots/Home-Page.png)
 * Product Listing Page
+![Product Listing Page](./ScreenShots/Product-Detail%20Page.png)
 * Product Details Page
+![Product Details Page](./ScreenShots/Product-Detail%20Page.png)
 * Login Page
+![Login Page](./ScreenShots/Login-Page.png)
+* Registration Page
+![Register Page](./ScreenShots/Register-Page.png)
 * Mobile View
+![Mobile View](./ScreenShots/Mobile-View.png)
 
 ## 👨‍💻 Author
 
