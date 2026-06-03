@@ -13,7 +13,7 @@ exports.getHome = async (req, res,next) => {
     res.render("Home", { products, search: '', user:req.user });
   }catch (error) {
         console.log(error);
-         return res.status(500).render('error', {
+         return res.status(500).render('404', {
         message: 'Internal Server Error'
     });     
 
@@ -46,7 +46,7 @@ const pages = Math.ceil(total/limit);
     res.render("products", { products, search , page, pages, total, user:req.user});
   }catch (error) {
         console.log(error);
-         return res.status(500).render('error', {
+         return res.status(500).render('404', {
         message: 'Internal Server Error'
     });     
 
@@ -65,7 +65,7 @@ exports.getProductDetails = async (req, res, next) => {
     res.render("Product-detail", { product , user:req.user});
   } catch (error) {
         console.log(error);
-         return res.status(500).render('error', {
+         return res.status(500).render('404', {
         message: 'Internal Server Error'
     });     
 

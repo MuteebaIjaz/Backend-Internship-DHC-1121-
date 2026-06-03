@@ -30,7 +30,7 @@ const RegisterUser = async (req, res) => {
         res.redirect('/Login');
     } catch (error) {
         console.log(error);
-        return res.status(500).render('error', {
+        return res.status(500).render('404', {
             message: 'Internal Server Error'
         });
 
@@ -59,7 +59,7 @@ const LoginUser = async (req, res) => {
         res.redirect('/');
     } catch (error) {
         console.log(error);
-        return res.status(500).render('error', {
+        return res.status(500).render('404', {
             message: 'Internal Server Error'
         });
     }
@@ -97,7 +97,7 @@ const AddProducts = async (req, res) => {
 
     } catch (error) {
         console.log(error);
-        return res.status(500).render('error', {
+        return res.status(500).render('404', {
             message: 'Internal Server Error'
         });
     }
