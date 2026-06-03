@@ -35,11 +35,7 @@ app.use(async (req, res, next) => {
 // Import and use routes
 app.use('/', authRoutes);
 
-// Global Error Handler
-app.use((err, req, res, next) => {
-    console.error('Unhandled Server Error:', err);
-    res.status(500).json({ success: false, message: 'An internal server error occurred.' });
-});
+
 
 const PORT = process.env.PORT || 3000;
 if (process.env.NODE_ENV !== 'production') {
@@ -48,4 +44,9 @@ if (process.env.NODE_ENV !== 'production') {
     });
 }
 
+// Global Error Handler
+app.use((err, req, res, next) => {
+    console.error('Unhandled Server Error:', err);
+    res.status(500).json({ success: false, message: 'An internal server error occurred.' });
+});
 module.exports = app; 
