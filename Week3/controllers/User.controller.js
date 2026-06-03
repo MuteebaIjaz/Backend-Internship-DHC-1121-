@@ -14,16 +14,16 @@ const RegisterUser = async (req, res) => {
     try {
         const { name, email, password, confirm_password } = req.body
         if (!name || !email || !password || !confirm_password) {
-            return res.status(400).render('register', { message: 'Kindly fill all the fields' });
+            return res.status(400).render('Register', { message: 'Kindly fill all the fields' });
         }
         const normalizedEmail = email.toLowerCase().trim();
         const exists = await User.findOne({ email });
         if (exists) {
-            return res.render('register', { message: 'Email is already in use' });
+            return res.render('Register', { message: 'Email is already in use' });
 
         }
         if (password !== confirm_password) {
-            return res.render('register', { message: 'Password and Confirm Password do not match' });
+            return res.render('Register', { message: 'Password and Confirm Password do not match' });
         }
         const hashedPassword = await bcrypt.hash(password, 10);
         await User.create({ name, email: normalizedEmail, password: hashedPassword });
