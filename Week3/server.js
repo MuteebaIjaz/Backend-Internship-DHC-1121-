@@ -6,6 +6,7 @@ const authRoutes = require('./routes/auth');
 const connectDB = require('./config/db.config.js');
 
 const app = express();
+const PORT = process.env.PORT || 3000;
 
 // Set up middleware
 app.use(express.json());
@@ -19,30 +20,19 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
 
-app.use(async (req, res, next) => {
-    try {
-      
-        if (mongoose.connection.readyState === 0) {
-            await connectDB();
-        }
-        next();
-    } catch (err) {
-        console.error('Database connection failed during request:', err);
-        res.status(500).send('Database connection error');
-    }
-});
+connectDB()
+  .then(() => {
+    app.listen(PORT, () => {
+      console.log(`Server running on port ${PORT}`);
+    });
+  })
+  .catch((err) => {
+    console.error("Failed to connect to MongoDB:", err);
+    process.exit(1);
+  });
 
 // Import and use routes
 app.use('/', authRoutes);
-
-
-
-const PORT = process.env.PORT || 3000;
-if (process.env.NODE_ENV !== 'production') {
-    app.listen(PORT, () => {
-        console.log(`[Server] Running at http://localhost:${PORT}`);
-    });
-}
 
 // Global Error Handler
 app.use((err, req, res, next) => {
