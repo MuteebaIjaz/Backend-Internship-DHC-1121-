@@ -17,7 +17,7 @@ const RegisterUser = async (req, res) => {
             return res.status(400).render('Register', { message: 'Kindly fill all the fields' });
         }
         const normalizedEmail = email.toLowerCase().trim();
-        const exists = await User.findOne({ email });
+        const exists = await User.findOne({ email: normalizedEmail });
         if (exists) {
             return res.render('Register', { message: 'Email is already in use' });
 
@@ -41,7 +41,8 @@ const RegisterUser = async (req, res) => {
 const LoginUser = async (req, res) => {
     try {
         const { email, password } = req.body;
-        const user = await User.findOne({ email });
+        const normalizedEmail = email.toLowerCase().trim();
+        const user = await User.findOne({ email: normalizedEmail });
         if (!user) {
             return res.status(401).render('Login', { message: 'Invalid credentials' });
         }
