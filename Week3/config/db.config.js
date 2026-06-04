@@ -10,7 +10,8 @@ const connectDB = async () => {
      }
      
      // 2. Use the environment variable, or default to local for development
-     const dbURI = process.env.MONGO_URI || "mongodb://localhost:27017/ShopHub";
+
+     const dbURI = process.env.MONGO_URI || process.env.MONGO_URL || "mongodb://localhost:27017/ShopHub";
      
      await mongoose.connect(dbURI);
      
