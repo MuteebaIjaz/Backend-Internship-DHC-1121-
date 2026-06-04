@@ -20,6 +20,14 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
 
+// Import and use routes
+app.use('/', authRoutes);
+
+// Global Error Handler
+app.use((err, req, res, next) => {
+    console.error('Unhandled Server Error:', err);
+    res.status(500).json({ success: false, message: 'An internal server error occurred.' });
+});
 connectDB()
   .then(() => {
     app.listen(PORT, () => {
@@ -31,12 +39,7 @@ connectDB()
     process.exit(1);
   });
 
-// Import and use routes
-app.use('/', authRoutes);
 
-// Global Error Handler
-app.use((err, req, res, next) => {
-    console.error('Unhandled Server Error:', err);
-    res.status(500).json({ success: false, message: 'An internal server error occurred.' });
-});
+
+
 module.exports = app; 
