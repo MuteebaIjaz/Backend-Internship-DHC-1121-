@@ -82,16 +82,6 @@ cd Week1/Week2/Week3
 npm install
 ```
 
-### Configure Environment Variables
-
-
-
-```
-PORT=3000
-MONGO_URI=your_mongodb_connection_string
-JWT_SECRET=your_secret_key
-```
-
 ### Run Development Server
 
 ```bash
@@ -128,7 +118,7 @@ The application is optimized for:
 ## 🚀 Deployment
 
 Deployed on:
-
+https://backend-internship-dhc-1121-production.up.railway.app/
 
 ### Production Build
 
