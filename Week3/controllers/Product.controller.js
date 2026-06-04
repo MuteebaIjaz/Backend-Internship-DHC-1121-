@@ -43,7 +43,7 @@ const pages = Math.ceil(total/limit);
 
     const products = await Products.find(query).skip((page-1) * limit).limit(limit);
 
-    res.render("products", { products, search , page, pages, total, user:req.user});
+    res.render("Products", { products, search , page, pages, total, user:req.user});
   }catch (error) {
         console.log(error);
          return res.status(500).render('404', {
