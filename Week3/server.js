@@ -28,6 +28,8 @@ app.use((err, req, res, next) => {
     console.error('Unhandled Server Error:', err);
     res.status(500).json({ success: false, message: 'An internal server error occurred.' });
 });
+
+// Database Connection
 connectDB()
   .then(() => {
     app.listen(PORT, () => {
